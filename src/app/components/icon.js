@@ -1,9 +1,6 @@
-import React from "react";
-
 class Icon extends React.Component {  
   render() {
     return <Title text="1" /> 
-     
   }
 };
 const Title = (props) => <h1>Title:{props.text}</h1>

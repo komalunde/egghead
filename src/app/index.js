@@ -1,18 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Icon from "./components/icon";
-
+import Pop from "./components/seven";
+import Aop from "./components/15";
+import Bad from "./components/bad";
 class App extends React.Component{
   render() {
     return (
       <div>
-        <h1> Hello world</h1>
+	<Aop />
+	<h1> Hello world</h1>
         <b>bold</b>
-	<Icon />
-       </div>
-      );
+	<Bad />
+	<hr />
+	<Pop />
+	<hr />
+	</div>
+      )
   }
-}
+};
 
 ReactDOM.render(
 <App />,
