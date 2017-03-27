@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//var styles = require('./list');
+
 
 
 var TodoItems = React.createClass({
@@ -51,8 +51,9 @@ render: function() {
         <div className="todoListMain">
           <div className="header">
             <form onSubmit={this.addItem}>
-              <input ref={(a) => this._inputElement =a} placeholder="enter task">
-              </input>
+              <input ref={(a) => this._inputElement =a} 
+		placeholder="enter task" />
+              
               <button type="submit">add</button>
             </form>
           </div>
@@ -62,4 +63,4 @@ render: function() {
     }
 });
 
-module.exports = TodoList;
+export default TodoList; 

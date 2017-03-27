@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import "./todolist.css";
 
 var TodoBox = React.createClass({
 	getInitialState: function () {
@@ -44,8 +45,8 @@ var TodoBox = React.createClass({
 		return (
 			<div className="well">
 				<h1 className="vert-offset-top-0">To do:</h1>
-				<TodoList data={this.state.data} removeNode={this.handleNodeRemoval} 
-				toggleComplete={this.handleToggleComplete} />
+				<TodoList data={this.state.data} removeNode={this.handleNodeRemoval}
+				 toggleComplete={this.handleToggleComplete} />
 				<TodoForm onTaskSubmit={this.handleSubmit} />
 			</div>
 		);
@@ -64,8 +65,8 @@ var TodoList = React.createClass({
 	render: function() {
 		var listNodes = this.props.data.map(function (listItem) {
 			return (
-				<TodoItem key={listItem.id} nodeId={listItem.id} task={listItem.task} 
-		complete={listItem.complete} removeNode={this.removeNode}
+				<TodoItem key={listItem.id} nodeId={listItem.id} 
+		task={listItem.task} complete={listItem.complete} removeNode={this.removeNode}
 		 toggleComplete={this.toggleComplete} />
 			);
 		},this);
@@ -100,10 +101,8 @@ var TodoItem = React.createClass({
 			<li className={classes}>
 				{this.props.task}
 				<div className="pull-right" role="group">
-				<button type="button" className="btn btn-xs btn-success img-circle" 
-				onClick={this.toggleComplete}>&#x2713;</button> 
-				<button type="button" className="btn btn-xs btn-danger img-circle" 
-				onClick={this.removeNode}>&#xff38;</button>
+					<button type="button" className="btn btn-xs btn-success img-circle" onClick={this.toggleComplete}					>&#x2713;</button> <button type="button" className="btn btn-xs btn-danger img-circle"
+ onClick={this.removeNode}>&#xff38;</button>
 				</div>
 			</li>
 		);
@@ -113,38 +112,37 @@ var TodoItem = React.createClass({
 var TodoForm = React.createClass({
 	doSubmit: function (e) {
 		e.preventDefault();
-		var task = React.findDOMNode(this.refs.task).value.trim();
+		var task = ReactDOM.findDOMNode(this.refs.task).value.trim();
 		if (!task) {
 			return;
 		}
 		this.props.onTaskSubmit(task);
-		React.findDOMNode(this.refs.task).value = '';
+		ReactDOM.findDOMNode(this.refs.task).value = '';
 		return;
 	},
 	render: function() {
 		return (
 			<div className="commentForm vert-offset-top-2">
 				<hr />
-			<div className="clearfix">
-			<form className="todoForm form-horizontal" onSubmit={this.doSubmit}>
-			<div className="form-group">
-			<label htmlFor="task" className="col-md-2 control-label">Task</label>
-			<div className="col-md-10">
-			<input type="text" id="task" ref="task" className="form-control"
-			 placeholder="What do you need to do?" />
-			</div>
-			</div>
-				<div className="row">
-				<div className="col-md-10 col-md-offset-2 text-right">
-				<input type="submit" value="Save Item" className="btn btn-primary" />
+				<div className="clearfix">
+					<form className="todoForm form-horizontal" onSubmit={this.doSubmit}>
+						<div className="form-group">
+						<label htmlFor="task" className="col-md-2 control-label">Task</label>
+						<div className="col-md-10">
+						<input type="text" id="task" ref="task" className="form-control" 
+						placeholder="What do you need to do?" />
+						</div>
+						</div>
+						<div className="row">
+						<div className="col-md-10 col-md-offset-2 text-right">
+						<input type="submit" value="Save Item" className="btn btn-primary" />
+						</div>
+						</div>
+					</form>
 				</div>
-				</div>
-				</form>
-			</div>
 			</div>
 		);
 	}
 });
-
 
 export default TodoBox;

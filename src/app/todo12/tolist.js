@@ -45,6 +45,8 @@ const TodoList = ({todos, remove}) => {
 
 // Contaner Component
 // Todo Id
+
+
 window.id = 0;
 class TodoAppl extends React.Component{
   constructor(props){

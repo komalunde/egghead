@@ -19,7 +19,7 @@ var TodoApp = React.createClass({
 		<TodoList items={this.state.items} />
 
 		<TodoListItem />
-		<TodoForm onFormSubmit={this.updateItems} />
+		<TodoForm  onFormSubmit={this.updateItems} />
 		</div>
 		);
 	}
@@ -69,7 +69,7 @@ var TodoForm = React.createClass({
 	this.props.onFormSubmit(this.state.item);
 	this.setState({item: ''});
 
-	React.findDOMNode(this.refs.item).focus();
+	ReactDOM.findDOMNode(this.refs.item).focus();
 	return;
       },
         onChange: function(e){
@@ -80,11 +80,13 @@ var TodoForm = React.createClass({
     render: function(){
        return
 	(
-	<form onSubmit={this.handleSubmit}>
+	<div>
+	<form onSubmit = {this.handleSubmit} >
 	<input type='text' ref='item' onChange={this.onChange}
-	value={this.state.item}/>
+	value={this.state.item} />
 	<input type='submit' value='Add'/>
 	</form>
+      </div>
 	);
     }
 });
